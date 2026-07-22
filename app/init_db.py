@@ -2,13 +2,14 @@ import os
 import sqlite3
 from werkzeug.security import generate_password_hash
 
-DB_PATH = os.getenv("DB_PATH", os.path.join(os.path.dirname(__file__), "agenda.db"))
 SEED_USERNAME = os.getenv("SEED_USERNAME", "admin")
 SEED_EMAIL = os.getenv("SEED_EMAIL", "admin@teste.com")
 SEED_PASSWORD = os.getenv("SEED_PASSWORD", "123456")
 
+
 def get_connection():
-    conn = sqlite3.connect(DB_PATH)
+    db_path = os.getenv("DB_PATH", os.path.join(os.path.dirname(__file__), "agenda.db"))
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 

@@ -8,7 +8,10 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from werkzeug.security import check_password_hash
 from dotenv import load_dotenv
 
-from init_db import init_db, get_connection
+try:
+    from .init_db import init_db, get_connection
+except ImportError:
+    from init_db import init_db, get_connection
 
 load_dotenv()
 
@@ -82,7 +85,7 @@ def buscar_agendamentos():
         return [], "A resposta da API de agendamentos não é válida."
 
     if not dados:
-        return [], "Nenhum agendamento encontrado."
+        return [], None
 
 
     agendamentos_validos = [unico_agendamento for unico_agendamento in dados if validar_agendamento(unico_agendamento)]
