@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  api_mock:
+    build:
+      context: ./api_mock
+      dockerfile: Dockerfile
+    container_name: agenda-api-mock
+    ports:
+      - "5001:5001"
+    networks:
+      - agenda-net
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: agenda-web
+    depends_on:
+      - api_mock
+    ports:
+      - "5000:5000"
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+      - API_URL=http://api_mock:5001/agendamentos
+      - API_TIMEOUT=${API_TIMEOUT}
+      - PORT=5000
+      - SEED_USERNAME=${SEED_USERNAME}
+      - SEED_EMAIL=${SEED_EMAIL}
+      - SEED_PASSWORD=${SEED_PASSWORD}
+      - DB_PATH=/app/agenda.db
+    volumes:
+      - ./app:/app
+      - ./app/agenda.db:/app/agenda.db
+    networks:
+      - agenda-net
+    restart: unless-stopped
+
+networks:
+  agenda-net:
+    driver: bridge
