@@ -1,0 +1,77 @@
+body{
+
+font-family: Arial, sans-serif;
+background-color: #f4f4f4;
+margin: 0;
+}
+
+header{
+                
+background-color: #2389f7;
+color: white;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+header h1{
+font-size: 20px;
+margin: 0;
+}
+
+header a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+
+main {
+padding: 20px;
+max-width: 1200px;
+margin: auto;
+}
+
+.search-box { 
+margin-bottom: 16px; 
+display: flex; gap: 8px; 
+}
+
+.search-box input {
+flex: 1; 
+padding: 8px; 
+border: 1px solid #ccc; 
+border-radius: 4px;
+}
+
+.search-box button {
+padding: 8px 16px; 
+background: #2c7be5; 
+color: #fff; border: none;
+border-radius: 4px; cursor: pointer;
+}
+
+.search-box button.secondary { 
+background: #2c7be5; 
+}
+#mensagem {
+margin-bottom: 12px; 
+padding: 10px; 
+border-radius: 4px; 
+font-size: 14px; 
+display: none;
+}
+
+#mensagem.info { 
+ background: #e7f1ff; 
+color: #1a5bb8; 
+border: 1px solid #b8d4fa;
+display: block; 
+}
+
+#mensagem.erro { 
+background: #fdecea; 
+color: #b3261e; 
+border: 1px solid #f5c6c3; 
+display: block; 
+}

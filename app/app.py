@@ -69,10 +69,10 @@ def buscar_agendamentos():
         logger.error(f"Erro desconhecido ao acessar a API: {e}")
         return [], "Ocorreu um erro ao buscar os agendamentos. Tente novamente."
 
-    agendamentos = response.json()
-    if not isinstance(agendamentos, list):
-        logger.error(f"Resposta da API não é uma lista: {agendamentos}")
-        return []
+    #agendamentos = response.json()
+    #if not isinstance(agendamentos, list):
+        #logger.error(f"Resposta da API não é uma lista: {agendamentos}")
+       # return []
 
     try:
         dados = response.json()

@@ -32,7 +32,7 @@ services:
       - DB_PATH=/app/agenda.db
     volumes:
       - ./app:/app
-      - ./app/agenda.db:/app/agenda.db
+      #- ./app/agenda.db:/app/agenda.db
     networks:
       - agenda-net
     restart: unless-stopped
